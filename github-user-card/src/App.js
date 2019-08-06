@@ -1,7 +1,6 @@
 import React from 'react';
-import ReactDom from 'react-dom'
 import axios from 'axios'
-import { Card, Icon, Image } from 'semantic-ui-react'
+import { Card, Button, Image } from 'semantic-ui-react'
 
 import './App.css';
 
@@ -49,20 +48,33 @@ class App extends React.Component {
     return (
       <div className="App">
         <header className="App-header">
-          <h1>Github User Card</h1>
+          <h1>Suparada's Github</h1>
         </header>
-          <img src={this.state.githubCard.avatar_url} />
-          <h2>{this.state.githubCard.name}</h2>
-          <h4>{this.state.githubCard.location}</h4>
-        <div>
-        <h4>Followers</h4>
-          {this.state.followers.map(item => {
-            return(
-              <div>
-                <p>{item.login}</p>
-              </div>
-            ) 
-          })} 
+        <div className="top-card">
+          <div className="flex">
+            <img className="ann-img" src={this.state.githubCard.avatar_url} />
+          </div>
+          <div className="flex">
+            <h2>{this.state.githubCard.name}</h2>
+            <h4>Username: {this.state.githubCard.login}</h4>
+            <h4>Location: {this.state.githubCard.location}</h4>
+            <Button color='black' href={this.state.githubCard.html_url} target="_blank">Visit Github</Button>
+          </div>  
+        </div>
+        <div className="followers">
+        <h3>Followers</h3>
+          <Card.Group itemsPerRow={4}>
+            {this.state.followers.map(item => {
+              return(
+                  <Card>
+                    <Image key={item} src={item.avatar_url} wrapped ui={false} />
+                    <Card.Content>
+                    <Card.Header>{item.login}</Card.Header>
+                    <Button size='mini' color='black' href={item.html_url} target="_blank">Visit Github</Button>
+                    </Card.Content>
+                  </Card>) 
+              })} 
+          </Card.Group>
         </div> 
       </div>
     );
