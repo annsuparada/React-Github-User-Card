@@ -10,7 +10,7 @@ class App extends React.Component {
     super();
     this.state = {
       githubCard: '',
-      followers: ''
+      followers: []
     }
   }
 
@@ -51,10 +51,19 @@ class App extends React.Component {
         <header className="App-header">
           <h1>Github User Card</h1>
         </header>
-        <img src={this.state.githubCard.avatar_url} />
-        <h2>{this.state.githubCard.name}</h2>
-        <h4>{this.state.githubCard.location}</h4>
-          
+          <img src={this.state.githubCard.avatar_url} />
+          <h2>{this.state.githubCard.name}</h2>
+          <h4>{this.state.githubCard.location}</h4>
+        <div>
+        <h4>Followers</h4>
+          {this.state.followers.map(item => {
+            return(
+              <div>
+                <p>{item.login}</p>
+              </div>
+            ) 
+          })} 
+        </div> 
       </div>
     );
   }
