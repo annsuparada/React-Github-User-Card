@@ -34,9 +34,13 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
-        <h1>Github User Card</h1>
+        <header className="App-header">
+          <h1>Github User Card</h1>
+        </header>
+        <img src={this.state.githubCard.avatar_url} />
         <h2>{this.state.githubCard.name}</h2>
-          {/* <image key={this.githubCard} src={this.githubCard.avatar_url} />   */}
+        <h4>{this.state.githubCard.location}</h4>
+          
       </div>
     );
   }
