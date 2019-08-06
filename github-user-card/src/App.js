@@ -9,13 +9,14 @@ class App extends React.Component {
   constructor() {
     super();
     this.state = {
-      githubCard: ''
+      githubCard: '',
+      followers: ''
     }
   }
 
   componentDidMount() {
     this.fetchUsers();
-    
+    this.fetchFollowers();
   }
 
   fetchUsers = () => {
@@ -23,6 +24,19 @@ class App extends React.Component {
       .then(response => {
         console.log('fetchUsers',response)
         this.setState({ githubCard: response.data })
+      })
+      
+      .catch(err => {
+        console.log(err)
+      })
+      
+  }
+
+  fetchFollowers = () => {
+    axios(`https://api.github.com/users/annsuparada/followers`)
+      .then(response => {
+        console.log('fetchFollowers',response)
+        this.setState({ followers: response.data })
       })
       
       .catch(err => {
