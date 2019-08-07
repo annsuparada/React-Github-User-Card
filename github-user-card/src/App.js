@@ -62,7 +62,7 @@ class App extends React.Component {
           </div>  
         </div>
         <div className="followers">
-        <h3>Followers</h3>
+        <h4>Followers: {this.state.followers.length}</h4>
           <Card.Group itemsPerRow={4}>
             {this.state.followers.map(item => {
               return(
